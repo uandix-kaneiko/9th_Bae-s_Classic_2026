@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>9th Bae's Classic · Fun Edition</title>
+<style>
+:root{
+  --ink:#13342c; --green:#0c6a4f; --mint:#dff4e8; --lime:#cced8e;
+  --cream:#fffcf4; --sand:#f5e9ce; --orange:#ff8b4d; --gold:#ffc950;
+  --line:#d9e8de; --muted:#61736b; --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#f1f7f0}
+body{
+  margin:0;color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  background:
+  radial-gradient(circle at 92% 2%,rgba(255,201,80,.4),transparent 22rem),
+  linear-gradient(180deg,#e4f7ea 0,#fffdf7 38%,#f9eed8 100%);
+}
+.app{max-width:560px;margin:auto;padding:0 14px calc(92px + env(safe-area-inset-bottom))}
+.hero{
+  position:relative;min-height:382px;overflow:hidden;margin:0 -14px 14px;padding:27px 22px;
+  background:linear-gradient(160deg,#07543f,#0e8461 58%,#4ab88a);color:#fff;border-radius:0 0 30px 30px;
+  box-shadow:0 12px 26px rgba(6,75,56,.24)
+}
+.hero:before{content:"";position:absolute;right:-70px;top:-86px;width:265px;height:265px;border:28px solid rgba(255,255,255,.1);border-radius:50%}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:89px;background:radial-gradient(ellipse at 10% 0,#eff8ef 0 22%,transparent 23%) 0 0/90px 54px repeat-x;opacity:.95}
+.stamp{position:relative;z-index:1;display:inline-flex;gap:7px;align-items:center;padding:8px 11px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:99px;font-size:11px;font-weight:900;letter-spacing:.09em}
+.hero h1{position:relative;z-index:1;margin:17px 0 8px;font-size:38px;line-height:1.04;letter-spacing:-.08em}
+.hero p{position:relative;z-index:1;margin:0;max-width:340px;font-size:14px;line-height:1.62;opacity:.94}
+.meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.meta span{padding:8px 10px;border-radius:11px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);font-size:11px;font-weight:800}
+.golf-art{position:absolute;z-index:1;right:11px;bottom:44px;width:166px;height:155px}
+.flag{position:absolute;right:16px;bottom:0;width:3px;height:120px;background:#fbfbf6;border-radius:3px;transform:rotate(5deg)}
+.flag:after{content:"9TH";position:absolute;top:1px;left:3px;width:50px;height:34px;padding:8px 0 0 8px;background:#ff7359;color:#fff;font-weight:900;font-size:11px;clip-path:polygon(0 0,100% 15%,75% 100%,0 82%)}
+.ball{position:absolute;right:82px;bottom:10px;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:inset -7px -7px 0 rgba(0,0,0,.06),0 8px 12px rgba(0,0,0,.13)}
+.ball:after{content:"···";letter-spacing:2px;position:absolute;top:2px;left:8px;color:#d5d5d5;font-weight:bold;transform:rotate(-30deg)}
+.club{position:absolute;right:105px;bottom:21px;width:3px;height:103px;border-radius:5px;background:#454c4c;transform:rotate(-35deg);transform-origin:bottom}
+.club:after{content:"";position:absolute;left:-9px;top:-7px;width:22px;height:14px;border-radius:7px 3px 8px 3px;background:#a4aaab}
+.speech{position:absolute;z-index:2;right:7px;bottom:143px;padding:7px 8px;background:#fff;color:#27624f;border-radius:10px;font-size:10px;font-weight:900;box-shadow:0 5px 10px rgba(0,0,0,.1);transform:rotate(4deg)}
+.speech:after{content:"";position:absolute;bottom:-6px;right:13px;border:7px solid transparent;border-top-color:#fff;border-bottom:0}
+.music{
+  display:flex;align-items:center;gap:11px;margin:14px 0 18px;padding:13px 14px;border-radius:18px;
+  color:#4b3e1c;background:#fff5d7;border:1px solid #f5dc93;box-shadow:0 8px 16px rgba(108,83,24,.06)
+}
+.music .note{font-size:28px}.music b{display:block;font-size:13px}.music span{display:block;margin-top:2px;font-size:11px;line-height:1.45;color:#786b4c}
+.music button{margin-left:auto;border:0;cursor:pointer;padding:8px 10px;border-radius:10px;background:#ffcf58;color:#6f4c0e;font-size:11px;font-weight:900}
+.title{display:flex;justify-content:space-between;align-items:end;margin:24px 2px 11px}
+.title h2{margin:0;font-size:21px;letter-spacing:-.06em}.title small{font-size:11px;color:var(--muted);font-weight:800}
+.scorecard{
+  display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;border-radius:21px;background:#fff;box-shadow:0 10px 22px rgba(18,74,54,.08)
+}
+.scorecard div{padding:15px 8px;text-align:center;border-right:1px solid #edf2ee}.scorecard div:last-child{border:0}
+.scorecard b{display:block;font-size:21px;color:var(--green);letter-spacing:-.06em}.scorecard span{display:block;margin-top:4px;font-size:10px;color:var(--muted);font-weight:800}
+.card{margin-top:14px;padding:17px;border-radius:22px;background:rgba(255,255,255,.95);box-shadow:0 9px 20px rgba(21,75,54,.07)}
+.card h3{margin:0 0 11px;font-size:17px;letter-spacing:-.05em}
+.rounds{display:grid;gap:10px}
+.round{display:grid;grid-template-columns:54px 1fr auto;gap:10px;align-items:center;padding:12px;border-radius:16px;background:#f5faf6;border:1px solid #e2efe6}
+.round .day{font-size:11px;font-weight:900;color:#147356}.round h4{margin:0;font-size:14px;letter-spacing:-.04em}.round p{margin:3px 0 0;font-size:11px;color:var(--muted);line-height:1.4}.round i{font-style:normal;font-size:24px}
+.teams{display:grid;gap:9px}
+.team{display:grid;grid-template-columns:44px 1fr 28px 1fr;gap:7px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:16px}
+.flight{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#dff3e5;color:#0b6d4d;font-size:10px;font-weight:900;line-height:1.1;text-align:center}
+.people{font-size:12px;line-height:1.55;font-weight:800;letter-spacing:-.04em}.vs{text-align:center;font-size:10px;font-weight:900;color:#ec754f}
+.party{
+  position:relative;overflow:hidden;background:linear-gradient(135deg,#ff9260,#ffbe58);color:#fff
+}
+.party:after{content:"🎨  🥩  🐟  🍻";position:absolute;right:-11px;bottom:-12px;font-size:39px;opacity:.25;transform:rotate(-7deg)}
+.party p{position:relative;z-index:1;margin:0;font-size:13px;line-height:1.65}.party .chips{position:relative;z-index:1;display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.party .chips span{padding:6px 8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.16);border-radius:99px;font-size:10px;font-weight:900}
+.timeline{display:grid;gap:1px;margin-top:4px}
+.timeitem{display:grid;grid-template-columns:63px 16px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed #dfe9e2}
+.timeitem:last-child{border-bottom:0}.timeitem .time{font-size:11px;color:#0f7958;font-weight:900;line-height:1.4}.pin{position:relative;width:15px;height:15px;border-radius:50%;background:#fbc952}.pin:after{content:"";position:absolute;left:6px;top:15px;height:calc(100% + 12px);width:2px;background:#d9e6dd}.timeitem:last-child .pin:after{display:none}.timeitem b{font-size:13px;letter-spacing:-.04em}.timeitem p{margin:3px 0 0;font-size:11px;line-height:1.45;color:var(--muted)}
+.game{background:#ecf8ef;border:1px solid #d1ecd9}
+.game h3{display:flex;align-items:center;gap:7px}.roulette{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:#fff}
+.roulette .ballmini{width:39px;height:39px;border-radius:50%;background:#fff;border:2px dashed #dce7df;display:grid;place-items:center;font-size:20px}.roulette b{font-size:13px}.roulette span{display:block;margin-top:3px;font-size:11px;color:var(--muted)}.roulette button{margin-left:auto;cursor:pointer;border:0;padding:9px 10px;border-radius:10px;background:#0c7655;color:#fff;font-size:11px;font-weight:900}
+.result{display:none;margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff7d8;color:#725622;font-size:12px;font-weight:800;line-height:1.5}
+.original{padding:0;overflow:hidden}.original summary{padding:15px 16px;cursor:pointer;list-style:none;font-size:13px;font-weight:900}.original summary::-webkit-details-marker{display:none}.original summary:after{content:"⌄";float:right;font-size:18px;color:#0d7958}.original[open] summary:after{content:"⌃"}.frame-wrap{padding:0 12px 12px}.frame-note{margin:0 0 9px;font-size:11px;line-height:1.55;color:var(--muted)}iframe{width:100%;height:540px;border:1px solid #dce7df;border-radius:14px;background:#fff}
+.footer{margin:20px 0 5px;text-align:center;font-size:11px;color:#718177;line-height:1.6}
+.nav{position:fixed;z-index:30;bottom:0;left:50%;transform:translateX(-50%);display:flex;justify-content:space-around;width:100%;max-width:560px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);border-top:1px solid rgba(28,90,65,.1);backdrop-filter:blur(14px)}
+.nav a{text-decoration:none;text-align:center;color:#6a8075;font-size:10px;font-weight:900}.nav a:first-child{color:#087458}.nav i{display:block;font-style:normal;font-size:19px;margin-bottom:1px}
+@media (min-width:561px){.app{padding-left:18px;padding-right:18px}.hero{margin-left:-18px;margin-right:-18px}}
+</style>
+</head>
+<body>
+<main class="app" id="top">
+  <section class="hero">
+    <div class="stamp">⛳ 9TH BAE'S CLASSIC OPEN</div>
+    <h1>스코어는 진지하게,<br>추억은 더 진하게.</h1>
+    <p>충주 시그너스CC에서 펼쳐지는 16인의 1박 2일 골프 원정.<br>공은 잃어도 웃음은 잃지 않는 것이 이번 대회의 룰입니다.</p>
+    <div class="meta">
+      <span>📅 2026.09.12–13</span>
+      <span>📍 충주 시그너스CC</span>
+      <span>👥 16 Players</span>
+    </div>
+    <div class="speech">OB는 풍경 감상입니다 😎</div>
+    <div class="golf-art"><div class="flag"></div><div class="club"></div><div class="ball"></div></div>
+  </section>
+
+  <section class="music">
+    <div class="note">🎵</div>
+    <div><b>기존 초대장 BGM 유지</b><span>아래 ‘원본 초대장 & 음악’에서 기존 페이지를 그대로 열어 음악과 오프닝을 즐길 수 있습니다.</span></div>
+    <button onclick="document.getElementById('original').open=true; document.getElementById('original').scrollIntoView({behavior:'smooth'})">음악 열기</button>
+  </section>
+
+  <div class="title" id="home"><h2>TOURNAMENT SNAPSHOT</h2><small>한눈에 보는 원정대</small></div>
+  <section class="scorecard">
+    <div><b>9TH</b><span>대회</span></div>
+    <div><b>16</b><span>참가자</span></div>
+    <div><b>2</b><span>라운드</span></div>
+    <div><b>1박2일</b><span>여정</span></div>
+  </section>
+
+  <section class="card">
+    <h3>🏁 이번 대회는 이렇게 갑니다</h3>
+    <div class="rounds">
+      <div class="round"><div class="day">DAY 1</div><div><h4>Best Ball · 2인 1팀</h4><p>파트너의 굿샷은 내 굿샷처럼, 미스샷은 바람 탓으로.</p></div><i>🤝</i></div>
+      <div class="round"><div class="day">DAY 2</div><div><h4>Individual Stroke · 개인전</h4><p>둘째 날 7시대 티오프. 정신력과 컨디션의 대결.</p></div><i>🏆</i></div>
+    </div>
+  </section>
+
+  <section class="card party">
+    <h3>🌙 19:00 이후, 진짜 19번 홀</h3>
+    <p>제천 펜션에서 바비큐와 연어 파티, 그리고 그림놀이까지. 경기 결과는 잠시 보류하고 오늘의 명장면부터 복기합니다.</p>
+    <div class="chips"><span>🥩 BBQ</span><span>🐟 Salmon</span><span>🎨 그림놀이</span><span>🍻 친목 타임</span></div>
+  </section>
+
+  <div class="title" id="teams"><h2>BEST BALL MATCHUPS</h2><small>친구지만 오늘은 라이벌</small></div>
+  <section class="card">
+    <div class="teams">
+      <div class="team"><div class="flight">FLIGHT<br>01</div><div class="people">안상규<br>함영호</div><div class="vs">VS</div><div class="people">정춘식<br>배영삼</div></div>
+      <div class="team"><div class="flight">FLIGHT<br>02</div><div class="people">이준석<br>윤홍준</div><div class="vs">VS</div><div class="people">김성배<br>김민규</div></div>
+      <div class="team"><div class="flight">FLIGHT<br>03</div><div class="people">김갑찬<br>송용석</div><div class="vs">VS</div><div class="people">이순경<br>송경환</div></div>
+      <div class="team"><div class="flight">FLIGHT<br>04</div><div class="people">최익락<br>권상각</div><div class="vs">VS</div><div class="people">김진호<br>박혜준</div></div>
+    </div>
+  </section>
+
+  <div class="title" id="schedule"><h2>PLAYBOOK</h2><small>늦지 말고, 즐겁게</small></div>
+  <section class="card">
+    <h3>📆 DAY 1 · 09.12 SAT</h3>
+    <div class="timeline">
+      <div class="timeitem"><div class="time">11:00</div><div class="pin"></div><div><b>점심 · 오시며가시며</b><p>무국으로 속 편하게 출발. 라운드 전 과식은 금물!</p></div></div>
+      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>시그너스CC 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 성실히.</p></div></div>
+      <div class="timeitem"><div class="time">12:10–17:00</div><div class="pin"></div><div><b>1일차 베스트볼 라운드</b><p>팀별 사진 한 장 필수. 8팀의 자존심 매치.</p></div></div>
+      <div class="timeitem"><div class="time">17:30–18:20</div><div class="pin"></div><div><b>제천 펜션 이동</b><p>차량별 이동. 스코어보다 저녁 메뉴가 더 중요해지는 시간.</p></div></div>
+      <div class="timeitem"><div class="time">19:00–23:30</div><div class="pin"></div><div><b>바비큐·연어·그림놀이</b><p>밤의 MVP는 버디보다 그림 실력일 수도 있습니다.</p></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>📆 DAY 2 · 09.13 SUN</h3>
+    <div class="timeline">
+      <div class="timeitem"><div class="time">05:20</div><div class="pin"></div><div><b>기상 & 체크아웃 준비</b><p>전날의 즐거움은 기억하고, 티오프 시간은 반드시 기억하기.</p></div></div>
+      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>CC 이동 & 조식</b><p>아침식사는 오시며가시며. 뜨끈한 한 끼로 컨디션 회복.</p></div></div>
+      <div class="timeitem"><div class="time">07:00–11:30</div><div class="pin"></div><div><b>2일차 개인 스트로크</b><p>오늘은 온전히 내 스코어와의 대화. 행운의 공 하나쯤은 옵니다.</p></div></div>
+      <div class="timeitem"><div class="time">13:10–13:40</div><div class="pin"></div><div><b>시상 & 단체사진</b><p>트로피도, 웃음도, 단체사진도 모두 챙겨서 해산!</p></div></div>
+    </div>
+  </section>
+
+  <section class="card game" id="game">
+    <h3>🎲 오늘의 골프 한마디 뽑기</h3>
+    <div class="roulette">
+      <div class="ballmini">⛳</div>
+      <div><b>라운드 전 한 줄 처방전</b><span>버튼을 눌러 오늘의 멘트를 뽑아보세요.</span></div>
+      <button onclick="drawQuote()">뽑기</button>
+    </div>
+    <div class="result" id="result"></div>
+  </section>
+
+  <details class="card original" id="original">
+    <summary>🎵 원본 초대장 & 음악 그대로 열기</summary>
+    <div class="frame-wrap">
+      <p class="frame-note">기존 웹페이지를 그대로 불러옵니다. 화면을 한 번 터치하거나 스크롤하면 기존 오프닝과 음악을 재생할 수 있습니다.</p>
+      <iframe src="https://uandix-kaneiko.github.io/9th-Bae-s-Classic/" title="9th Bae's Classic Original Invitation" loading="lazy" allow="autoplay"></iframe>
+    </div>
+  </details>
+
+  <p class="footer">9TH BAE'S CLASSIC OPEN · GOLF, TRAVEL AND PEOPLE<br>공은 페어웨이로, 추억은 오래오래.</p>
+</main>
+
+<nav class="nav">
+  <a href="#top"><i>🏌️</i>홈</a>
+  <a href="#teams"><i>🤝</i>매치업</a>
+  <a href="#schedule"><i>🗓️</i>일정</a>
+  <a href="#game"><i>🎲</i>뽑기</a>
+  <a href="#original"><i>🎵</i>음악</a>
+</nav>
+
+<script>
+const quotes = [
+  "오늘의 목표: 파는 줄이고, 박수는 늘리기! 👏",
+  "OB는 없었습니다. 다만 다음 홀로 가는 지름길이었을 뿐. 🌲",
+  "퍼팅은 마음으로, 스코어는 겸손하게. ⛳",
+  "캐디님이 웃으면 아직 희망이 있습니다. 😄",
+  "동반자의 나이스샷은 크게, 내 미스샷은 작게 기억하기. 🤝",
+  "멀리 가는 드라이버보다 같이 가는 동반자가 좋습니다. 🏌️",
+  "오늘도 공보다 더 많이 굴러갈 것은 이야기입니다. 🍻",
+  "버디는 오면 감사히, 파는 오면 당연히, 더블은 추억으로. 🐦"
+];
+function drawQuote(){
+  const result = document.getElementById('result');
+  result.textContent = quotes[Math.floor(Math.random()*quotes.length)];
+  result.style.display = 'block';
+}
+</script>
+</body>
+</html>
