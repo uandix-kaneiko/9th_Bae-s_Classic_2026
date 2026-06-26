@@ -74,6 +74,26 @@ body{
 .game h3{display:flex;align-items:center;gap:7px}.roulette{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:#fff}
 .roulette .ballmini{width:39px;height:39px;border-radius:50%;background:#fff;border:2px dashed #dce7df;display:grid;place-items:center;font-size:20px}.roulette b{font-size:13px}.roulette span{display:block;margin-top:3px;font-size:11px;color:var(--muted)}.roulette button{margin-left:auto;cursor:pointer;border:0;padding:9px 10px;border-radius:10px;background:#0c7655;color:#fff;font-size:11px;font-weight:900}
 .result{display:none;margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff7d8;color:#725622;font-size:12px;font-weight:800;line-height:1.5}
+
+/* Venue info card */
+.venue-card{margin-top:14px;padding:17px;border-radius:22px;background:rgba(255,255,255,.95);box-shadow:0 9px 20px rgba(21,75,54,.07)}
+.venue-card h3{margin:0 0 13px;font-size:17px;letter-spacing:-.05em}
+.venue-item{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px;border-radius:16px;background:#f5faf6;border:1px solid #e2efe6;margin-bottom:9px}
+.venue-item:last-child{margin-bottom:0}
+.venue-icon{font-size:22px;margin-top:1px}
+.venue-label{font-size:10px;font-weight:900;color:#0f7958;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+.venue-name{font-size:14px;font-weight:900;letter-spacing:-.04em;margin-bottom:3px}
+.venue-addr{font-size:11px;color:var(--muted);line-height:1.5}
+.venue-tel{display:inline-block;margin-top:5px;font-size:11px;font-weight:800;color:#0c7655}
+.venue-badge{display:inline-block;margin-top:6px;padding:4px 8px;border-radius:99px;background:#fff3cd;color:#7a5400;font-size:10px;font-weight:900;border:1px solid #f5dc93}
+.venue-divider{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:10px;color:var(--muted);font-weight:800}
+.venue-divider:before,.venue-divider:after{content:"";flex:1;height:1px;background:#e2efe6}
+.course-option{display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;border-radius:13px;background:#fff;border:1px solid #d1ecd9;margin-bottom:7px}
+.course-option:last-child{margin-bottom:0}
+.course-name{font-size:13px;font-weight:900;letter-spacing:-.04em}
+.course-dist{font-size:11px;color:var(--muted);margin-top:2px}
+.course-tag{padding:5px 8px;border-radius:8px;background:#dff3e5;color:#0b6d4d;font-size:10px;font-weight:900;white-space:nowrap}
+
 .original{padding:0;overflow:hidden}.original summary{padding:15px 16px;cursor:pointer;list-style:none;font-size:13px;font-weight:900}.original summary::-webkit-details-marker{display:none}.original summary:after{content:"⌄";float:right;font-size:18px;color:#0d7958}.original[open] summary:after{content:"⌃"}.frame-wrap{padding:0 12px 12px}.frame-note{margin:0 0 9px;font-size:11px;line-height:1.55;color:var(--muted)}iframe{width:100%;height:540px;border:1px solid #dce7df;border-radius:14px;background:#fff}
 .footer{margin:20px 0 5px;text-align:center;font-size:11px;color:#718177;line-height:1.6}
 .nav{position:fixed;z-index:30;bottom:0;left:50%;transform:translateX(-50%);display:flex;justify-content:space-around;width:100%;max-width:560px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);border-top:1px solid rgba(28,90,65,.1);backdrop-filter:blur(14px)}
@@ -86,10 +106,10 @@ body{
   <section class="hero">
     <div class="stamp">⛳ 9TH BAE'S CLASSIC OPEN</div>
     <h1>스코어는 진지하게,<br>추억은 더 진하게.</h1>
-    <p>충주 시그너스CC에서 펼쳐지는 16인의 1박 2일 골프 원정.<br>공은 잃어도 웃음은 잃지 않는 것이 이번 대회의 룰입니다.</p>
+    <p>1박 2일 골프 원정, 16인의 자존심 대결.<br>공은 잃어도 웃음은 잃지 않는 것이 이번 대회의 룰입니다.</p>
     <div class="meta">
       <span>📅 2026.09.12–13</span>
-      <span>📍 충주 시그너스CC</span>
+      <span>📍 충북 단양·제천권</span>
       <span>👥 16 Players</span>
     </div>
     <div class="speech">OB는 풍경 감상입니다 😎</div>
@@ -112,9 +132,43 @@ body{
     </div>
   </section>
 
+  <!-- 장소 정보 카드 -->
+  <div class="title" id="venue"><h2>VENUE INFO</h2><small>골프장 · 숙박</small></div>
+  <section class="venue-card">
+    <h3>🏨 숙박 · 하늘계곡연수펜션</h3>
+    <div class="venue-item">
+      <div class="venue-icon">🏡</div>
+      <div>
+        <div class="venue-label">Stay</div>
+        <div class="venue-name">하늘계곡연수펜션</div>
+        <div class="venue-addr">충청북도 제천시 한수면 송계리 188</div>
+        <a class="venue-tel" href="tel:043-653-2013">📞 043-653-2013</a>
+      </div>
+    </div>
+
+    <h3 style="margin:16px 0 11px;font-size:17px;letter-spacing:-.05em">⛳ 골프장 · 확정 예정</h3>
+    <div class="venue-badge">🔍 두 곳 중 한 곳 확정 예정</div>
+    <div style="margin-top:10px">
+      <div class="course-option">
+        <div>
+          <div class="course-name">대호단양CC</div>
+          <div class="course-dist">펜션에서 약 24km · 30분</div>
+        </div>
+        <div class="course-tag">옵션 A</div>
+      </div>
+      <div class="course-option">
+        <div>
+          <div class="course-name">임페리얼레이크CC</div>
+          <div class="course-dist">펜션에서 약 34km · 40분</div>
+        </div>
+        <div class="course-tag">옵션 B</div>
+      </div>
+    </div>
+  </section>
+
   <section class="card party">
     <h3>🌙 19:00 이후, 진짜 19번 홀</h3>
-    <p>제천 펜션에서 바비큐와 연어 파티, 그리고 그림놀이까지. 경기 결과는 잠시 보류하고 오늘의 명장면부터 복기합니다.</p>
+    <p>하늘계곡연수펜션에서 바비큐와 연어 파티, 그리고 그림놀이까지. 경기 결과는 잠시 보류하고 오늘의 명장면부터 복기합니다.</p>
     <div class="chips"><span>🥩 BBQ</span><span>🐟 Salmon</span><span>🎨 그림놀이</span><span>🍻 친목 타임</span></div>
   </section>
 
@@ -133,9 +187,9 @@ body{
     <h3>📆 DAY 1 · 09.12 SAT</h3>
     <div class="timeline">
       <div class="timeitem"><div class="time">11:00</div><div class="pin"></div><div><b>점심 · 오시며가시며</b><p>무국으로 속 편하게 출발. 라운드 전 과식은 금물!</p></div></div>
-      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>시그너스CC 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 성실히.</p></div></div>
+      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>골프장 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 성실히.</p></div></div>
       <div class="timeitem"><div class="time">12:10–17:00</div><div class="pin"></div><div><b>1일차 베스트볼 라운드</b><p>팀별 사진 한 장 필수. 8팀의 자존심 매치.</p></div></div>
-      <div class="timeitem"><div class="time">17:30–18:20</div><div class="pin"></div><div><b>제천 펜션 이동</b><p>차량별 이동. 스코어보다 저녁 메뉴가 더 중요해지는 시간.</p></div></div>
+      <div class="timeitem"><div class="time">17:30–18:20</div><div class="pin"></div><div><b>하늘계곡연수펜션 이동</b><p>차량별 이동. 스코어보다 저녁 메뉴가 더 중요해지는 시간.</p></div></div>
       <div class="timeitem"><div class="time">19:00–23:30</div><div class="pin"></div><div><b>바비큐·연어·그림놀이</b><p>밤의 MVP는 버디보다 그림 실력일 수도 있습니다.</p></div></div>
     </div>
   </section>
@@ -144,7 +198,7 @@ body{
     <h3>📆 DAY 2 · 09.13 SUN</h3>
     <div class="timeline">
       <div class="timeitem"><div class="time">05:20</div><div class="pin"></div><div><b>기상 & 체크아웃 준비</b><p>전날의 즐거움은 기억하고, 티오프 시간은 반드시 기억하기.</p></div></div>
-      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>CC 이동 & 조식</b><p>아침식사는 오시며가시며. 뜨끈한 한 끼로 컨디션 회복.</p></div></div>
+      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>골프장 이동 & 조식</b><p>아침식사는 오시며가시며. 뜨끈한 한 끼로 컨디션 회복.</p></div></div>
       <div class="timeitem"><div class="time">07:00–11:30</div><div class="pin"></div><div><b>2일차 개인 스트로크</b><p>오늘은 온전히 내 스코어와의 대화. 행운의 공 하나쯤은 옵니다.</p></div></div>
       <div class="timeitem"><div class="time">13:10–13:40</div><div class="pin"></div><div><b>시상 & 단체사진</b><p>트로피도, 웃음도, 단체사진도 모두 챙겨서 해산!</p></div></div>
     </div>
@@ -160,16 +214,15 @@ body{
     <div class="result" id="result"></div>
   </section>
 
-
   <p class="footer">9TH BAE'S CLASSIC OPEN · GOLF, TRAVEL AND PEOPLE<br>공은 페어웨이로, 추억은 오래오래.</p>
 </main>
 
 <nav class="nav">
   <a href="#top"><i>🏌️</i>홈</a>
+  <a href="#venue"><i>📍</i>장소</a>
   <a href="#teams"><i>🤝</i>매치업</a>
   <a href="#schedule"><i>🗓️</i>일정</a>
   <a href="#game"><i>🎲</i>뽑기</a>
-  <a href="#original"><i>🎵</i>음악</a>
 </nav>
 
 <script>
