@@ -40,17 +40,9 @@ body{
 .club:after{content:"";position:absolute;left:-9px;top:-7px;width:22px;height:14px;border-radius:7px 3px 8px 3px;background:#a4aaab}
 .speech{position:absolute;z-index:2;right:7px;bottom:143px;padding:7px 8px;background:#fff;color:#27624f;border-radius:10px;font-size:10px;font-weight:900;box-shadow:0 5px 10px rgba(0,0,0,.1);transform:rotate(4deg)}
 .speech:after{content:"";position:absolute;bottom:-6px;right:13px;border:7px solid transparent;border-top-color:#fff;border-bottom:0}
-.music{
-  display:flex;align-items:center;gap:11px;margin:14px 0 18px;padding:13px 14px;border-radius:18px;
-  color:#4b3e1c;background:#fff5d7;border:1px solid #f5dc93;box-shadow:0 8px 16px rgba(108,83,24,.06)
-}
-.music .note{font-size:28px}.music b{display:block;font-size:13px}.music span{display:block;margin-top:2px;font-size:11px;line-height:1.45;color:#786b4c}
-.music button{margin-left:auto;border:0;cursor:pointer;padding:8px 10px;border-radius:10px;background:#ffcf58;color:#6f4c0e;font-size:11px;font-weight:900}
 .title{display:flex;justify-content:space-between;align-items:end;margin:24px 2px 11px}
 .title h2{margin:0;font-size:21px;letter-spacing:-.06em}.title small{font-size:11px;color:var(--muted);font-weight:800}
-.scorecard{
-  display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;border-radius:21px;background:#fff;box-shadow:0 10px 22px rgba(18,74,54,.08)
-}
+.scorecard{display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;border-radius:21px;background:#fff;box-shadow:0 10px 22px rgba(18,74,54,.08)}
 .scorecard div{padding:15px 8px;text-align:center;border-right:1px solid #edf2ee}.scorecard div:last-child{border:0}
 .scorecard b{display:block;font-size:21px;color:var(--green);letter-spacing:-.06em}.scorecard span{display:block;margin-top:4px;font-size:10px;color:var(--muted);font-weight:800}
 .card{margin-top:14px;padding:17px;border-radius:22px;background:rgba(255,255,255,.95);box-shadow:0 9px 20px rgba(21,75,54,.07)}
@@ -62,39 +54,76 @@ body{
 .team{display:grid;grid-template-columns:44px 1fr 28px 1fr;gap:7px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:16px}
 .flight{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#dff3e5;color:#0b6d4d;font-size:10px;font-weight:900;line-height:1.1;text-align:center}
 .people{font-size:12px;line-height:1.55;font-weight:800;letter-spacing:-.04em}.vs{text-align:center;font-size:10px;font-weight:900;color:#ec754f}
-.party{
-  position:relative;overflow:hidden;background:linear-gradient(135deg,#ff9260,#ffbe58);color:#fff
-}
+.party{position:relative;overflow:hidden;background:linear-gradient(135deg,#ff9260,#ffbe58);color:#fff}
 .party:after{content:"🎨  🥩  🐟  🍻";position:absolute;right:-11px;bottom:-12px;font-size:39px;opacity:.25;transform:rotate(-7deg)}
-.party p{position:relative;z-index:1;margin:0;font-size:13px;line-height:1.65}.party .chips{position:relative;z-index:1;display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.party .chips span{padding:6px 8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.16);border-radius:99px;font-size:10px;font-weight:900}
+.party p{position:relative;z-index:1;margin:0;font-size:13px;line-height:1.65}
+.party .chips{position:relative;z-index:1;display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.party .chips span{padding:6px 8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.16);border-radius:99px;font-size:10px;font-weight:900}
 .timeline{display:grid;gap:1px;margin-top:4px}
 .timeitem{display:grid;grid-template-columns:63px 16px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed #dfe9e2}
-.timeitem:last-child{border-bottom:0}.timeitem .time{font-size:11px;color:#0f7958;font-weight:900;line-height:1.4}.pin{position:relative;width:15px;height:15px;border-radius:50%;background:#fbc952}.pin:after{content:"";position:absolute;left:6px;top:15px;height:calc(100% + 12px);width:2px;background:#d9e6dd}.timeitem:last-child .pin:after{display:none}.timeitem b{font-size:13px;letter-spacing:-.04em}.timeitem p{margin:3px 0 0;font-size:11px;line-height:1.45;color:var(--muted)}
+.timeitem:last-child{border-bottom:0}.timeitem .time{font-size:11px;color:#0f7958;font-weight:900;line-height:1.4}
+.pin{position:relative;width:15px;height:15px;border-radius:50%;background:#fbc952}
+.pin:after{content:"";position:absolute;left:6px;top:15px;height:calc(100% + 12px);width:2px;background:#d9e6dd}
+.timeitem:last-child .pin:after{display:none}
+.timeitem b{font-size:13px;letter-spacing:-.04em}.timeitem p{margin:3px 0 0;font-size:11px;line-height:1.45;color:var(--muted)}
 .game{background:#ecf8ef;border:1px solid #d1ecd9}
-.game h3{display:flex;align-items:center;gap:7px}.roulette{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:#fff}
-.roulette .ballmini{width:39px;height:39px;border-radius:50%;background:#fff;border:2px dashed #dce7df;display:grid;place-items:center;font-size:20px}.roulette b{font-size:13px}.roulette span{display:block;margin-top:3px;font-size:11px;color:var(--muted)}.roulette button{margin-left:auto;cursor:pointer;border:0;padding:9px 10px;border-radius:10px;background:#0c7655;color:#fff;font-size:11px;font-weight:900}
+.game h3{display:flex;align-items:center;gap:7px}
+.roulette{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:#fff}
+.roulette .ballmini{width:39px;height:39px;border-radius:50%;background:#fff;border:2px dashed #dce7df;display:grid;place-items:center;font-size:20px}
+.roulette b{font-size:13px}.roulette span{display:block;margin-top:3px;font-size:11px;color:var(--muted)}
+.roulette button{margin-left:auto;cursor:pointer;border:0;padding:9px 10px;border-radius:10px;background:#0c7655;color:#fff;font-size:11px;font-weight:900}
 .result{display:none;margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff7d8;color:#725622;font-size:12px;font-weight:800;line-height:1.5}
+.penalty-btn{margin-top:10px;width:100%;border:0;cursor:pointer;padding:12px;border-radius:13px;background:linear-gradient(135deg,#ff7c4d,#ffb347);color:#fff;font-size:13px;font-weight:900;letter-spacing:-.02em}
+.penalty-result{display:none;margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff0e8;color:#7a3010;font-size:12px;font-weight:800;line-height:1.5;text-align:center}
 
-/* Venue info card */
+/* Venue card */
 .venue-card{margin-top:14px;padding:17px;border-radius:22px;background:rgba(255,255,255,.95);box-shadow:0 9px 20px rgba(21,75,54,.07)}
 .venue-card h3{margin:0 0 13px;font-size:17px;letter-spacing:-.05em}
 .venue-item{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px;border-radius:16px;background:#f5faf6;border:1px solid #e2efe6;margin-bottom:9px}
-.venue-item:last-child{margin-bottom:0}
 .venue-icon{font-size:22px;margin-top:1px}
 .venue-label{font-size:10px;font-weight:900;color:#0f7958;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
 .venue-name{font-size:14px;font-weight:900;letter-spacing:-.04em;margin-bottom:3px}
 .venue-addr{font-size:11px;color:var(--muted);line-height:1.5}
 .venue-tel{display:inline-block;margin-top:5px;font-size:11px;font-weight:800;color:#0c7655}
 .venue-badge{display:inline-block;margin-top:6px;padding:4px 8px;border-radius:99px;background:#fff3cd;color:#7a5400;font-size:10px;font-weight:900;border:1px solid #f5dc93}
-.venue-divider{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:10px;color:var(--muted);font-weight:800}
-.venue-divider:before,.venue-divider:after{content:"";flex:1;height:1px;background:#e2efe6}
 .course-option{display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;border-radius:13px;background:#fff;border:1px solid #d1ecd9;margin-bottom:7px}
 .course-option:last-child{margin-bottom:0}
 .course-name{font-size:13px;font-weight:900;letter-spacing:-.04em}
 .course-dist{font-size:11px;color:var(--muted);margin-top:2px}
 .course-tag{padding:5px 8px;border-radius:8px;background:#dff3e5;color:#0b6d4d;font-size:10px;font-weight:900;white-space:nowrap}
 
-.original{padding:0;overflow:hidden}.original summary{padding:15px 16px;cursor:pointer;list-style:none;font-size:13px;font-weight:900}.original summary::-webkit-details-marker{display:none}.original summary:after{content:"⌄";float:right;font-size:18px;color:#0d7958}.original[open] summary:after{content:"⌃"}.frame-wrap{padding:0 12px 12px}.frame-note{margin:0 0 9px;font-size:11px;line-height:1.55;color:var(--muted)}iframe{width:100%;height:540px;border:1px solid #dce7df;border-radius:14px;background:#fff}
+/* 연수 드립 배너 */
+.workshop-banner{margin-top:12px;padding:11px 13px;border-radius:14px;background:#edf7f1;border:1px solid #c4e6d0;display:flex;align-items:center;gap:9px}
+.workshop-banner .wb-icon{font-size:22px;flex-shrink:0}
+.workshop-banner .wb-title{font-size:11px;font-weight:900;color:#0a5c3e;letter-spacing:.02em}
+.workshop-banner .wb-sub{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
+.wb-stamp{font-size:9px;font-weight:900;padding:3px 7px;border-radius:99px;background:#0c7655;color:#fff;margin-left:auto;white-space:nowrap;flex-shrink:0}
+
+/* 가짜 리뷰 카드 */
+.review-card{margin-top:12px;padding:13px 14px;border-radius:16px;background:#fffdf0;border:1px solid #f0e5a0}
+.review-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.review-avatar{width:32px;height:32px;border-radius:50%;background:#d4e8d8;display:grid;place-items:center;font-size:16px;flex-shrink:0}
+.review-name{font-size:12px;font-weight:900;color:var(--ink)}
+.review-platform{font-size:10px;color:var(--muted);margin-top:1px}
+.review-stars{color:#ffc000;font-size:14px;letter-spacing:1px}
+.review-text{font-size:11px;line-height:1.6;color:#4a3e1a}
+.review-date{font-size:10px;color:var(--muted);margin-top:6px}
+
+/* 날씨 예보 패러디 */
+.weather-card{position:relative;z-index:1;margin-top:13px;padding:12px 13px;border-radius:14px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35)}
+.weather-title{font-size:10px;font-weight:900;letter-spacing:.06em;opacity:.85;margin-bottom:8px}
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.weather-item{text-align:center;padding:8px 4px;border-radius:10px;background:rgba(255,255,255,.18)}
+.weather-icon{font-size:20px}
+.weather-label{font-size:9px;font-weight:900;margin-top:3px;opacity:.9;line-height:1.3}
+
+/* 체크인 룰 */
+.checkin-rules{position:relative;z-index:1;margin-top:13px;padding:12px 13px;border-radius:14px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)}
+.checkin-title{font-size:10px;font-weight:900;letter-spacing:.06em;opacity:.85;margin-bottom:7px}
+.rule-item{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px;font-size:11px;line-height:1.45}
+.rule-item:last-child{margin-bottom:0}
+.rule-num{font-size:9px;font-weight:900;padding:2px 5px;border-radius:5px;background:rgba(255,255,255,.3);flex-shrink:0;margin-top:1px}
+
 .footer{margin:20px 0 5px;text-align:center;font-size:11px;color:#718177;line-height:1.6}
 .nav{position:fixed;z-index:30;bottom:0;left:50%;transform:translateX(-50%);display:flex;justify-content:space-around;width:100%;max-width:560px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);border-top:1px solid rgba(28,90,65,.1);backdrop-filter:blur(14px)}
 .nav a{text-decoration:none;text-align:center;color:#6a8075;font-size:10px;font-weight:900}.nav a:first-child{color:#087458}.nav i{display:block;font-style:normal;font-size:19px;margin-bottom:1px}
@@ -103,6 +132,8 @@ body{
 </head>
 <body>
 <main class="app" id="top">
+
+  <!-- ① 히어로: 하늘계곡 카피 말풍선 업그레이드 -->
   <section class="hero">
     <div class="stamp">⛳ 9TH BAE'S CLASSIC OPEN</div>
     <h1>스코어는 진지하게,<br>추억은 더 진하게.</h1>
@@ -112,7 +143,7 @@ body{
       <span>📍 충북 단양·제천권</span>
       <span>👥 16 Players</span>
     </div>
-    <div class="speech">OB는 풍경 감상입니다 😎</div>
+    <div class="speech">하늘과 가까워서 OB도 하늘로 ☁️</div>
     <div class="golf-art"><div class="flag"></div><div class="club"></div><div class="ball"></div></div>
   </section>
 
@@ -132,7 +163,7 @@ body{
     </div>
   </section>
 
-  <!-- 장소 정보 카드 -->
+  <!-- ② 장소 섹션: 연수 드립 + 가짜 리뷰 카드 추가 -->
   <div class="title" id="venue"><h2>VENUE INFO</h2><small>골프장 · 숙박</small></div>
   <section class="venue-card">
     <h3>🏨 숙박 · 하늘계곡연수펜션</h3>
@@ -146,7 +177,33 @@ body{
       </div>
     </div>
 
-    <h3 style="margin:16px 0 11px;font-size:17px;letter-spacing:-.05em">⛳ 골프장 · 확정 예정</h3>
+    <!-- 연수 드립 배너 -->
+    <div class="workshop-banner">
+      <div class="wb-icon">📋</div>
+      <div>
+        <div class="wb-title">제9회 골프 역량강화 워크숍 공식 숙소</div>
+        <div class="wb-sub">전략회의실: 19번홀 · 발표자료: 스코어카드 · 드레스코드: 골프복</div>
+      </div>
+      <div class="wb-stamp">공식지정</div>
+    </div>
+
+    <!-- 가짜 리뷰 카드 -->
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">⛳</div>
+        <div>
+          <div class="review-name">참가자 일동 (16명)</div>
+          <div class="review-platform">네이버 지도 리뷰 · 사전 후기</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">
+        "BBQ 완벽, 연어 환상, 그림 실력은 처참. 스코어 얘기는 밤새 했지만 아무도 기억 못함. 하늘이 진짜 가까워서 드라이버 샷이 구름에 걸리는 줄 알았습니다. 재방문 의사 200%."
+      </div>
+      <div class="review-date">2026년 9월 13일 예정된 후기</div>
+    </div>
+
+    <h3 style="margin:18px 0 11px;font-size:17px;letter-spacing:-.05em">⛳ 골프장 · 확정 예정</h3>
     <div class="venue-badge">🔍 두 곳 중 한 곳 확정 예정</div>
     <div style="margin-top:10px">
       <div class="course-option">
@@ -166,10 +223,39 @@ body{
     </div>
   </section>
 
+  <!-- ③ 파티 섹션: 날씨 예보 패러디 + 체크인 룰 추가 -->
   <section class="card party">
     <h3>🌙 19:00 이후, 진짜 19번 홀</h3>
     <p>하늘계곡연수펜션에서 바비큐와 연어 파티, 그리고 그림놀이까지. 경기 결과는 잠시 보류하고 오늘의 명장면부터 복기합니다.</p>
-    <div class="chips"><span>🥩 BBQ</span><span>🐟 Salmon</span><span>🎨 그림놀이</span><span>🍻 친목 타임</span></div>
+
+    <!-- 날씨 예보 패러디 -->
+    <div class="weather-card">
+      <div class="weather-title">🌤️ 9월 12일 저녁 하늘계곡 특보</div>
+      <div class="weather-grid">
+        <div class="weather-item">
+          <div class="weather-icon">🌬️</div>
+          <div class="weather-label">OB 핑계<br>대기 적합</div>
+        </div>
+        <div class="weather-item">
+          <div class="weather-icon">🍺</div>
+          <div class="weather-label">맥주 지수<br>매우 높음</div>
+        </div>
+        <div class="weather-item">
+          <div class="weather-icon">🎨</div>
+          <div class="weather-label">그림 실력<br>예보 불가</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 체크인 룰 -->
+    <div class="checkin-rules">
+      <div class="checkin-title">📋 입실 주의사항 (공식)</div>
+      <div class="rule-item"><span class="rule-num">1</span>입실 후 30분간 스코어 이야기 금지. 위반 시 벌주 1잔.</div>
+      <div class="rule-item"><span class="rule-num">2</span>"나 오늘 진짜 잘 쳤는데…" 발언은 1인당 3회까지만 허용.</div>
+      <div class="rule-item"><span class="rule-num">3</span>그림놀이 최하점자는 설거지 당번. 이의 없음.</div>
+    </div>
+
+    <div class="chips" style="margin-top:13px"><span>🥩 BBQ</span><span>🐟 Salmon</span><span>🎨 그림놀이</span><span>🍻 친목 타임</span></div>
   </section>
 
   <div class="title" id="teams"><h2>BEST BALL MATCHUPS</h2><small>친구지만 오늘은 라이벌</small></div>
@@ -186,8 +272,8 @@ body{
   <section class="card">
     <h3>📆 DAY 1 · 09.12 SAT</h3>
     <div class="timeline">
-      <div class="timeitem"><div class="time">11:00</div><div class="pin"></div><div><b>점심 ----별도 재공지---</b><p>테이블별 소주 한병씩 하고 출발. 라운드 전 과음은 필수!</p></div></div>
-      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>골프장 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 대충대충.</p></div></div>
+      <div class="timeitem"><div class="time">11:00</div><div class="pin"></div><div><b>점심 · 오시며가시며</b><p>무국으로 속 편하게 출발. 라운드 전 과식은 금물!</p></div></div>
+      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>골프장 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 성실히.</p></div></div>
       <div class="timeitem"><div class="time">12:10–17:00</div><div class="pin"></div><div><b>1일차 베스트볼 라운드</b><p>팀별 사진 한 장 필수. 8팀의 자존심 매치.</p></div></div>
       <div class="timeitem"><div class="time">17:30–18:20</div><div class="pin"></div><div><b>하늘계곡연수펜션 이동</b><p>차량별 이동. 스코어보다 저녁 메뉴가 더 중요해지는 시간.</p></div></div>
       <div class="timeitem"><div class="time">19:00–23:30</div><div class="pin"></div><div><b>바비큐·연어·그림놀이</b><p>밤의 MVP는 버디보다 그림 실력일 수도 있습니다.</p></div></div>
@@ -198,12 +284,13 @@ body{
     <h3>📆 DAY 2 · 09.13 SUN</h3>
     <div class="timeline">
       <div class="timeitem"><div class="time">05:20</div><div class="pin"></div><div><b>기상 & 체크아웃 준비</b><p>전날의 즐거움은 기억하고, 티오프 시간은 반드시 기억하기.</p></div></div>
-      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>골프장 이동 & 조식</b><p>아침식사는 클럽하우스에서. 해장국으로 속풀이.</p></div></div>
+      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>골프장 이동 & 조식</b><p>아침식사는 오시며가시며. 뜨끈한 한 끼로 컨디션 회복.</p></div></div>
       <div class="timeitem"><div class="time">07:00–11:30</div><div class="pin"></div><div><b>2일차 개인 스트로크</b><p>오늘은 온전히 내 스코어와의 대화. 행운의 공 하나쯤은 옵니다.</p></div></div>
       <div class="timeitem"><div class="time">13:10–13:40</div><div class="pin"></div><div><b>시상 & 단체사진</b><p>트로피도, 웃음도, 단체사진도 모두 챙겨서 해산!</p></div></div>
     </div>
   </section>
 
+  <!-- ④ 뽑기 섹션: 벌칙 룰렛 추가 -->
   <section class="card game" id="game">
     <h3>🎲 오늘의 골프 한마디 뽑기</h3>
     <div class="roulette">
@@ -212,6 +299,14 @@ body{
       <button onclick="drawQuote()">뽑기</button>
     </div>
     <div class="result" id="result"></div>
+
+    <!-- 벌칙 룰렛 -->
+    <div class="roulette" style="margin-top:10px">
+      <div class="ballmini">🎰</div>
+      <div><b>오늘 밤 벌칙 뽑기</b><span>파티 전 한 명씩 돌려보세요.</span></div>
+      <button onclick="drawPenalty()" style="background:linear-gradient(135deg,#ff7c4d,#ffb347)">뽑기</button>
+    </div>
+    <div class="penalty-result" id="penalty-result"></div>
   </section>
 
   <p class="footer">9TH BAE'S CLASSIC OPEN · GOLF, TRAVEL AND PEOPLE<br>공은 페어웨이로, 추억은 오래오래.</p>
@@ -228,7 +323,6 @@ body{
 <script>
 const quotes = [
   "오늘의 목표: 파는 줄이고, 박수는 늘리기! 👏",
-  "갑형한테 딱 만원만 따자!!! 😄",
   "OB는 없었습니다. 다만 다음 홀로 가는 지름길이었을 뿐. 🌲",
   "퍼팅은 마음으로, 스코어는 겸손하게. ⛳",
   "캐디님이 웃으면 아직 희망이 있습니다. 😄",
@@ -237,10 +331,36 @@ const quotes = [
   "오늘도 공보다 더 많이 굴러갈 것은 이야기입니다. 🍻",
   "버디는 오면 감사히, 파는 오면 당연히, 더블은 추억으로. 🐦"
 ];
+
+const penalties = [
+  "🍺 맥주 한 잔 원샷 (사이즈는 본인 선택, 책임은 본인에게)",
+  "🎤 내일 라운드 출발 전 노래 한 소절 의무 선창",
+  "🍳 내일 아침 식사 후 설거지 당번 등극",
+  "📸 오늘 밤 단체사진 포즈 총괄 연출 담당",
+  "🎨 그림놀이에서 무조건 첫 번째 발표자",
+  "🏌️ 내일 라운드 중 파트너 캐디백 한 홀 직접 들기",
+  "💬 오늘 밤 건배사 3번 담당 (거절 불가)",
+  "🥩 BBQ 고기 굽기 전담 (퇴근 불가)",
+  "🙇 내일 첫 홀 티샷 전 전체 경례 구호 선창",
+  "🎰 면제! 오늘은 운이 따릅니다. 내일 버디 확률 +10% 🍀"
+];
+
 function drawQuote(){
-  const result = document.getElementById('result');
-  result.textContent = quotes[Math.floor(Math.random()*quotes.length)];
-  result.style.display = 'block';
+  const el = document.getElementById('result');
+  el.textContent = quotes[Math.floor(Math.random()*quotes.length)];
+  el.style.display = 'block';
+}
+
+function drawPenalty(){
+  const el = document.getElementById('penalty-result');
+  el.style.display = 'none';
+  setTimeout(()=>{
+    el.textContent = "🎰 뽑는 중...";
+    el.style.display = 'block';
+    setTimeout(()=>{
+      el.textContent = penalties[Math.floor(Math.random()*penalties.length)];
+    }, 600);
+  }, 50);
 }
 </script>
 </body>
