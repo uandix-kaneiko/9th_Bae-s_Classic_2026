@@ -9,18 +9,43 @@
   --ink:#13342c; --green:#0c6a4f; --mint:#dff4e8; --lime:#cced8e;
   --cream:#fffcf4; --sand:#f5e9ce; --orange:#ff8b4d; --gold:#ffc950;
   --line:#d9e8de; --muted:#61736b; --white:#fff;
+  --bg-main: linear-gradient(180deg,#e4f7ea 0,#fffdf7 38%,#f9eed8 100%);
+  --card-bg: rgba(255,255,255,.95);
+  --text-color: #13342c;
 }
+/* 🌙 야간 파티 모드 테마 스위칭 변수 */
+body.night-shift {
+  --ink:#ffffff; --muted:#a2b5ab; --white:#183e33;
+  --bg-main: linear-gradient(180deg,#04110d 0,#08221b 40%,#140b02 100%);
+  --card-bg: rgba(11,38,31,0.85);
+  --text-color: #f0f7f4;
+  --line: #1c5243;
+}
+body.night-shift html { background:#04110d; }
+body.night-shift .round, body.night-shift .venue-item, body.night-shift .course-option { background:rgba(13,51,41,0.6); border-color:#1c5243; color:#fff; }
+body.night-shift .roulette, body.night-shift .review-card { background:rgba(17,58,47,0.6); border-color:#215a4b; color:#fff; }
+body.night-shift .review-text { color:#e0ece7; }
+body.night-shift b, body.night-shift h4 { color: var(--gold) !important; }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:#f1f7f0}
 body{
-  margin:0;color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
-  background:
-  radial-gradient(circle at 92% 2%,rgba(255,201,80,.4),transparent 22rem),
-  linear-gradient(180deg,#e4f7ea 0,#fffdf7 38%,#f9eed8 100%);
+  margin:0;color:var(--text-color);font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  background: radial-gradient(circle at 92% 2%,rgba(255,201,80,.4),transparent 22rem), var(--bg-main);
+  transition: background 0.5s ease, color 0.5s ease;
 }
-.app{max-width:560px;margin:auto;padding:0 14px calc(92px + env(safe-area-inset-bottom))}
+
+/* 🌌 AI 추가: 은하수 캔버스 스타일 */
+#galaxy-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; opacity: 0;
+  transition: opacity 1s ease;
+}
+body.night-shift #galaxy-canvas { opacity: 1; }
+
+.app{position:relative; z-index:2; max-width:560px;margin:auto;padding:0 14px calc(92px + env(safe-area-inset-bottom))}
 .hero{
-  position:relative;min-height:382px;overflow:hidden;margin:0 -14px 14px;padding:27px 22px;
+  position:relative;min-height:410px;overflow:hidden;margin:0 -14px 14px;padding:27px 22px;
   background:linear-gradient(160deg,#07543f,#0e8461 58%,#4ab88a);color:#fff;border-radius:0 0 30px 30px;
   box-shadow:0 12px 26px rgba(6,75,56,.24)
 }
@@ -31,53 +56,96 @@ body{
 .hero p{position:relative;z-index:1;margin:0;max-width:340px;font-size:14px;line-height:1.62;opacity:.94}
 .meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
 .meta span{padding:8px 10px;border-radius:11px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);font-size:11px;font-weight:800}
+
+.countdown-box {
+  position:relative; z-index:1; display:flex; align-items:center; gap:8px;
+  margin-top:15px; padding:8px 14px; background:rgba(0,0,0,0.18);
+  border:1px dashed rgba(255,255,255,0.3); border-radius:12px; width:fit-content;
+}
+.cd-label { font-size:10px; font-weight:900; color:var(--gold); letter-spacing:0.05em; }
+.cd-time { font-size:13px; font-weight:800; font-family:monospace; letter-spacing:0.02em; }
+
 .golf-art{position:absolute;z-index:1;right:11px;bottom:44px;width:166px;height:155px}
 .flag{position:absolute;right:16px;bottom:0;width:3px;height:120px;background:#fbfbf6;border-radius:3px;transform:rotate(5deg)}
 .flag:after{content:"9TH";position:absolute;top:1px;left:3px;width:50px;height:34px;padding:8px 0 0 8px;background:#ff7359;color:#fff;font-weight:900;font-size:11px;clip-path:polygon(0 0,100% 15%,75% 100%,0 82%)}
-.ball{position:absolute;right:82px;bottom:10px;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:inset -7px -7px 0 rgba(0,0,0,.06),0 8px 12px rgba(0,0,0,.13)}
+
+.ball{position:absolute;right:82px;bottom:10px;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:inset -7px -7px 0 rgba(0,0,0,.06),0 8px 12px rgba(0,0,0,.13);transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);}
 .ball:after{content:"···";letter-spacing:2px;position:absolute;top:2px;left:8px;color:#d5d5d5;font-weight:bold;transform:rotate(-30deg)}
-.club{position:absolute;right:105px;bottom:21px;width:3px;height:103px;border-radius:5px;background:#454c4c;transform:rotate(-35deg);transform-origin:bottom}
+.club{position:absolute;right:105px;bottom:21px;width:3px;height:103px;border-radius:5px;background:#454c4c;transform:rotate(-35deg);transform-origin:bottom;transition: transform 0.3s ease-in-out;}
 .club:after{content:"";position:absolute;left:-9px;top:-7px;width:22px;height:14px;border-radius:7px 3px 8px 3px;background:#a4aaab}
+
+@keyframes club-swing {
+  0% { transform: rotate(-35deg); }
+  30% { transform: rotate(-75deg); }
+  70% { transform: rotate(15deg); }
+  100% { transform: rotate(-35deg); }
+}
+@keyframes ball-fly {
+  0% { transform: translate(0,0) scale(1); }
+  40% { transform: translate(120px, -180px) scale(0.6); opacity:0.3; }
+  41% { transform: translate(-120px, -100px) scale(0.1); opacity:0; }
+  100% { transform: translate(0,0) scale(1); opacity:1; }
+}
+.club.active { animation: club-swing 0.4s ease-in-out; }
+.ball.active { animation: ball-fly 0.7s ease-in-out forwards; }
+
 .speech{position:absolute;z-index:2;right:7px;bottom:143px;padding:7px 8px;background:#fff;color:#27624f;border-radius:10px;font-size:10px;font-weight:900;box-shadow:0 5px 10px rgba(0,0,0,.1);transform:rotate(4deg)}
 .speech:after{content:"";position:absolute;bottom:-6px;right:13px;border:7px solid transparent;border-top-color:#fff;border-bottom:0}
 .title{display:flex;justify-content:space-between;align-items:end;margin:24px 2px 11px}
-.title h2{margin:0;font-size:21px;letter-spacing:-.06em}.title small{font-size:11px;color:var(--muted);font-weight:800}
-.scorecard{display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;border-radius:21px;background:#fff;box-shadow:0 10px 22px rgba(18,74,54,.08)}
+.title h2{margin:0;font-size:21px;letter-spacing:-.06em; color:var(--ink)}
+.title small{font-size:11px;color:var(--muted);font-weight:800}
+.scorecard{display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;border-radius:21px;background:#fff;box-shadow:0 10px 22px rgba(18,74,54,.08);transition: background 0.5s;}
+body.night-shift .scorecard { background:rgba(17,58,47,0.6); }
 .scorecard div{padding:15px 8px;text-align:center;border-right:1px solid #edf2ee}.scorecard div:last-child{border:0}
+body.night-shift .scorecard div { border-right-color:#1c5243; }
 .scorecard b{display:block;font-size:21px;color:var(--green);letter-spacing:-.06em}.scorecard span{display:block;margin-top:4px;font-size:10px;color:var(--muted);font-weight:800}
-.card{margin-top:14px;padding:17px;border-radius:22px;background:rgba(255,255,255,.95);box-shadow:0 9px 20px rgba(21,75,54,.07)}
+.card{margin-top:14px;padding:17px;border-radius:22px;background:var(--card-bg);box-shadow:0 9px 20px rgba(21,75,54,.07);transition: background 0.5s, border 0.5s;}
 .card h3{margin:0 0 11px;font-size:17px;letter-spacing:-.05em}
 .rounds{display:grid;gap:10px}
 .round{display:grid;grid-template-columns:54px 1fr auto;gap:10px;align-items:center;padding:12px;border-radius:16px;background:#f5faf6;border:1px solid #e2efe6}
 .round .day{font-size:11px;font-weight:900;color:#147356}.round h4{margin:0;font-size:14px;letter-spacing:-.04em}.round p{margin:3px 0 0;font-size:11px;color:var(--muted);line-height:1.4}.round i{font-style:normal;font-size:24px}
+body.night-shift .round .day { color: var(--gold); }
 .teams{display:grid;gap:9px}
 .team{display:grid;grid-template-columns:44px 1fr 28px 1fr;gap:7px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:16px}
 .flight{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#dff3e5;color:#0b6d4d;font-size:10px;font-weight:900;line-height:1.1;text-align:center}
+body.night-shift .flight { background:#1c5243; color: #fff; }
 .people{font-size:12px;line-height:1.55;font-weight:800;letter-spacing:-.04em}.vs{text-align:center;font-size:10px;font-weight:900;color:#ec754f}
 .party{position:relative;overflow:hidden;background:linear-gradient(135deg,#ff9260,#ffbe58);color:#fff}
+body.night-shift .party { background: linear-gradient(135deg, #b85427, #cf8c1b); }
 .party:after{content:"🎨  🥩  🐟  🍻";position:absolute;right:-11px;bottom:-12px;font-size:39px;opacity:.25;transform:rotate(-7deg)}
 .party p{position:relative;z-index:1;margin:0;font-size:13px;line-height:1.65}
 .party .chips{position:relative;z-index:1;display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
 .party .chips span{padding:6px 8px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.16);border-radius:99px;font-size:10px;font-weight:900}
+
+.party-toggle-btn {
+  margin-top:12px; background:rgba(255,255,255,0.25); border:1px solid #fff;
+  color:#fff; padding:8px 14px; border-radius:10px; font-size:11px; font-weight:900;
+  cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.2s;
+}
+
 .timeline{display:grid;gap:1px;margin-top:4px}
 .timeitem{display:grid;grid-template-columns:63px 16px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed #dfe9e2}
+body.night-shift .timeitem { border-bottom-color: #1c5243; }
 .timeitem:last-child{border-bottom:0}.timeitem .time{font-size:11px;color:#0f7958;font-weight:900;line-height:1.4}
+body.night-shift .timeitem .time { color: var(--lime); }
 .pin{position:relative;width:15px;height:15px;border-radius:50%;background:#fbc952}
 .pin:after{content:"";position:absolute;left:6px;top:15px;height:calc(100% + 12px);width:2px;background:#d9e6dd}
+body.night-shift .pin:after { background:#1c5243; }
 .timeitem:last-child .pin:after{display:none}
 .timeitem b{font-size:13px;letter-spacing:-.04em}.timeitem p{margin:3px 0 0;font-size:11px;line-height:1.45;color:var(--muted)}
 .game{background:#ecf8ef;border:1px solid #d1ecd9}
+body.night-shift .game { background:rgba(15,55,45,0.6); border-color:#1c5243; }
 .game h3{display:flex;align-items:center;gap:7px}
 .roulette{display:flex;align-items:center;gap:12px;padding:12px;border-radius:16px;background:#fff}
 .roulette .ballmini{width:39px;height:39px;border-radius:50%;background:#fff;border:2px dashed #dce7df;display:grid;place-items:center;font-size:20px}
+body.night-shift .ballmini { background: #18473a; border-color: #2c6e5c; }
 .roulette b{font-size:13px}.roulette span{display:block;margin-top:3px;font-size:11px;color:var(--muted)}
-.roulette button{margin-left:auto;cursor:pointer;border:0;padding:9px 10px;border-radius:10px;background:#0c7655;color:#fff;font-size:11px;font-weight:900}
+.roulette button{margin-left:auto;cursor:pointer;border:0;padding:9px 10px;border-radius:10px;background:#0c7655;color:#fff;font-size:11px;font-weight:900; white-space:nowrap;}
 .result{display:none;margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff7d8;color:#725622;font-size:12px;font-weight:800;line-height:1.5}
 .penalty-btn{margin-top:10px;width:100%;border:0;cursor:pointer;padding:12px;border-radius:13px;background:linear-gradient(135deg,#ff7c4d,#ffb347);color:#fff;font-size:13px;font-weight:900;letter-spacing:-.02em}
 .penalty-result{display:none;margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff0e8;color:#7a3010;font-size:12px;font-weight:800;line-height:1.5;text-align:center}
 
-/* Venue card */
-.venue-card{margin-top:14px;padding:17px;border-radius:22px;background:rgba(255,255,255,.95);box-shadow:0 9px 20px rgba(21,75,54,.07)}
+.venue-card{margin-top:14px;padding:17px;border-radius:22px;background:var(--card-bg);box-shadow:0 9px 20px rgba(21,75,54,.07);transition: background 0.5s;}
 .venue-card h3{margin:0 0 13px;font-size:17px;letter-spacing:-.05em}
 .venue-item{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px;border-radius:16px;background:#f5faf6;border:1px solid #e2efe6;margin-bottom:9px}
 .venue-icon{font-size:22px;margin-top:1px}
@@ -85,31 +153,33 @@ body{
 .venue-name{font-size:14px;font-weight:900;letter-spacing:-.04em;margin-bottom:3px}
 .venue-addr{font-size:11px;color:var(--muted);line-height:1.5}
 .venue-tel{display:inline-block;margin-top:5px;font-size:11px;font-weight:800;color:#0c7655}
+body.night-shift .venue-tel { color: var(--lime); }
 .venue-badge{display:inline-block;margin-top:6px;padding:4px 8px;border-radius:99px;background:#fff3cd;color:#7a5400;font-size:10px;font-weight:900;border:1px solid #f5dc93}
 .course-option{display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;border-radius:13px;background:#fff;border:1px solid #d1ecd9;margin-bottom:7px}
 .course-option:last-child{margin-bottom:0}
 .course-name{font-size:13px;font-weight:900;letter-spacing:-.04em}
 .course-dist{font-size:11px;color:var(--muted);margin-top:2px}
 .course-tag{padding:5px 8px;border-radius:8px;background:#dff3e5;color:#0b6d4d;font-size:10px;font-weight:900;white-space:nowrap}
+body.night-shift .course-tag { background: #1c5243; color: #fff; }
 
-/* 연수 드립 배너 */
 .workshop-banner{margin-top:12px;padding:11px 13px;border-radius:14px;background:#edf7f1;border:1px solid #c4e6d0;display:flex;align-items:center;gap:9px}
+body.night-shift .workshop-banner { background:rgba(15,56,45,0.6); border-color:#215a4b; }
 .workshop-banner .wb-icon{font-size:22px;flex-shrink:0}
 .workshop-banner .wb-title{font-size:11px;font-weight:900;color:#0a5c3e;letter-spacing:.02em}
+body.night-shift .workshop-banner .wb-title { color: var(--lime); }
 .workshop-banner .wb-sub{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
 .wb-stamp{font-size:9px;font-weight:900;padding:3px 7px;border-radius:99px;background:#0c7655;color:#fff;margin-left:auto;white-space:nowrap;flex-shrink:0}
 
-/* 가짜 리뷰 카드 */
 .review-card{margin-top:12px;padding:13px 14px;border-radius:16px;background:#fffdf0;border:1px solid #f0e5a0}
 .review-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .review-avatar{width:32px;height:32px;border-radius:50%;background:#d4e8d8;display:grid;place-items:center;font-size:16px;flex-shrink:0}
-.review-name{font-size:12px;font-weight:900;color:var(--ink)}
+body.night-shift .review-avatar { background: #1c5243; }
+.review-name{font-size:12px;font-weight:900;color:var(--text-color)}
 .review-platform{font-size:10px;color:var(--muted);margin-top:1px}
 .review-stars{color:#ffc000;font-size:14px;letter-spacing:1px}
 .review-text{font-size:11px;line-height:1.6;color:#4a3e1a}
 .review-date{font-size:10px;color:var(--muted);margin-top:6px}
 
-/* 날씨 예보 패러디 */
 .weather-card{position:relative;z-index:1;margin-top:13px;padding:12px 13px;border-radius:14px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35)}
 .weather-title{font-size:10px;font-weight:900;letter-spacing:.06em;opacity:.85;margin-bottom:8px}
 .weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
@@ -117,7 +187,6 @@ body{
 .weather-icon{font-size:20px}
 .weather-label{font-size:9px;font-weight:900;margin-top:3px;opacity:.9;line-height:1.3}
 
-/* 체크인 룰 */
 .checkin-rules{position:relative;z-index:1;margin-top:13px;padding:12px 13px;border-radius:14px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)}
 .checkin-title{font-size:10px;font-weight:900;letter-spacing:.06em;opacity:.85;margin-bottom:7px}
 .rule-item{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px;font-size:11px;line-height:1.45}
@@ -126,14 +195,31 @@ body{
 
 .footer{margin:20px 0 5px;text-align:center;font-size:11px;color:#718177;line-height:1.6}
 .nav{position:fixed;z-index:30;bottom:0;left:50%;transform:translateX(-50%);display:flex;justify-content:space-around;width:100%;max-width:560px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);border-top:1px solid rgba(28,90,65,.1);backdrop-filter:blur(14px)}
-.nav a{text-decoration:none;text-align:center;color:#6a8075;font-size:10px;font-weight:900}.nav a:first-child{color:#087458}.nav i{display:block;font-style:normal;font-size:19px;margin-bottom:1px}
+body.night-shift .nav { background: rgba(15,45,37,0.92); border-top-color: rgba(255,255,255,0.1); }
+.nav a{text-decoration:none;text-align:center;color:#6a8075;font-size:10px;font-weight:900}
+body.night-shift .nav a { color: #a2b5ab; }
+.nav a:first-child{color:#087458}
+body.night-shift .nav a:first-child { color: var(--gold); }
+.nav i{display:block;font-style:normal;font-size:19px;margin-bottom:1px}
+
+.particle {
+  position: fixed; pointer-events: none; z-index: 100;
+  font-size: 20px; animation: particle-fade 0.8s ease-out forwards;
+}
+@keyframes particle-fade {
+  0% { transform: translate(0,0) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--mx), var(--my)) scale(0.3) rotate(var(--mr)); opacity: 0; }
+}
+
 @media (min-width:561px){.app{padding-left:18px;padding-right:18px}.hero{margin-left:-18px;margin-right:-18px}}
 </style>
 </head>
 <body>
+
+<canvas id="galaxy-canvas"></canvas>
+
 <main class="app" id="top">
 
-  <!-- ① 히어로: 하늘계곡 카피 말풍선 업그레이드 -->
   <section class="hero">
     <div class="stamp">⛳ 9TH BAE'S CLASSIC OPEN</div>
     <h1>스코어는 진지하게,<br>추억은 더 진하게.</h1>
@@ -143,8 +229,18 @@ body{
       <span>📍 충북 단양·제천권</span>
       <span>👥 16 Players</span>
     </div>
+    
+    <div class="countdown-box">
+      <span class="cd-label">티오프 D-MINUS</span>
+      <span class="cd-time" id="countdown-timer">계산 중...</span>
+    </div>
+
     <div class="speech">하늘과 가까워서 OB도 하늘로 ☁️</div>
-    <div class="golf-art"><div class="flag"></div><div class="club"></div><div class="ball"></div></div>
+    <div class="golf-art">
+      <div class="flag"></div>
+      <div class="club" id="hero-club"></div>
+      <div class="ball" id="hero-ball"></div>
+    </div>
   </section>
 
   <div class="title" id="home"><h2>TOURNAMENT SNAPSHOT</h2><small>한눈에 보는 원정대</small></div>
@@ -163,7 +259,6 @@ body{
     </div>
   </section>
 
-  <!-- ② 장소 섹션: 연수 드립 + 가짜 리뷰 카드 추가 -->
   <div class="title" id="venue"><h2>VENUE INFO</h2><small>골프장 · 숙박</small></div>
   <section class="venue-card">
     <h3>🏨 숙박 · 하늘계곡연수펜션</h3>
@@ -177,17 +272,15 @@ body{
       </div>
     </div>
 
-    <!-- 연수 드립 배너 -->
     <div class="workshop-banner">
       <div class="wb-icon">📋</div>
       <div>
         <div class="wb-title">제9회 골프 역량강화 워크숍 공식 숙소</div>
-        <div class="wb-sub">전략회의실: 19번홀 · 발표자료: 스코어카드 · 드레스코드: 골프복</div>
+        <div class="wb-sub">전략회의실: 19번홀 · 발표자료: 스코어카드 · 드레스코드: 빨강빤스</div>
       </div>
       <div class="wb-stamp">공식지정</div>
     </div>
 
-    <!-- 가짜 리뷰 카드 -->
     <div class="review-card">
       <div class="review-header">
         <div class="review-avatar">⛳</div>
@@ -223,12 +316,14 @@ body{
     </div>
   </section>
 
-  <!-- ③ 파티 섹션: 날씨 예보 패러디 + 체크인 룰 추가 -->
   <section class="card party">
     <h3>🌙 19:00 이후, 진짜 19번 홀</h3>
     <p>하늘계곡연수펜션에서 바비큐와 연어 파티, 그리고 그림놀이까지. 경기 결과는 잠시 보류하고 오늘의 명장면부터 복기합니다.</p>
 
-    <!-- 날씨 예보 패러디 -->
+    <button class="party-toggle-btn" onclick="toggleNightMode(event)">
+      <span id="party-btn-icon">🔥</span> <span id="party-btn-text">19번 홀 파티 모드 가동!</span>
+    </button>
+
     <div class="weather-card">
       <div class="weather-title">🌤️ 9월 12일 저녁 하늘계곡 특보</div>
       <div class="weather-grid">
@@ -247,12 +342,11 @@ body{
       </div>
     </div>
 
-    <!-- 체크인 룰 -->
     <div class="checkin-rules">
       <div class="checkin-title">📋 입실 주의사항 (공식)</div>
       <div class="rule-item"><span class="rule-num">1</span>입실 후 30분간 스코어 이야기 금지. 위반 시 벌주 1잔.</div>
       <div class="rule-item"><span class="rule-num">2</span>"나 오늘 진짜 잘 쳤는데…" 발언은 1인당 3회까지만 허용.</div>
-      <div class="rule-item"><span class="rule-num">3</span>그림놀이 최하점자는 설거지 당번. 이의 없음.</div>
+      <div class="rule-item"><span class="rule-num">3</span>꼴치 팀은 설거지 당번. 이의 없음.</div>
     </div>
 
     <div class="chips" style="margin-top:13px"><span>🥩 BBQ</span><span>🐟 Salmon</span><span>🎨 그림놀이</span><span>🍻 친목 타임</span></div>
@@ -272,8 +366,8 @@ body{
   <section class="card">
     <h3>📆 DAY 1 · 09.12 SAT</h3>
     <div class="timeline">
-      <div class="timeitem"><div class="time">11:00</div><div class="pin"></div><div><b>점심 --- 별도 재공지 예정 ---</b><p>테이블별 소주 한병으로 쓰리게 출발. 라운드 전 과음은 필수!</p></div></div>
-      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>골프장 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 대충~.</p></div></div>
+      <div class="timeitem"><div class="time">11:00</div><div class="pin"></div><div><b>점심 · --- 별도 재공지 예정 ---</b><p>테이블당 소주 2병. 라운드 전 과음은 필수!</p></div></div>
+      <div class="timeitem"><div class="time">11:40</div><div class="pin"></div><div><b>골프장 집결</b><p>락카 배정, 조별 확인, 준비운동은 각자 성실히.</p></div></div>
       <div class="timeitem"><div class="time">12:10–17:00</div><div class="pin"></div><div><b>1일차 베스트볼 라운드</b><p>팀별 사진 한 장 필수. 8팀의 자존심 매치.</p></div></div>
       <div class="timeitem"><div class="time">17:30–18:20</div><div class="pin"></div><div><b>하늘계곡연수펜션 이동</b><p>차량별 이동. 스코어보다 저녁 메뉴가 더 중요해지는 시간.</p></div></div>
       <div class="timeitem"><div class="time">19:00–23:30</div><div class="pin"></div><div><b>바비큐·연어·그림놀이</b><p>밤의 MVP는 버디보다 그림 실력일 수도 있습니다.</p></div></div>
@@ -284,27 +378,25 @@ body{
     <h3>📆 DAY 2 · 09.13 SUN</h3>
     <div class="timeline">
       <div class="timeitem"><div class="time">05:20</div><div class="pin"></div><div><b>기상 & 체크아웃 준비</b><p>전날의 즐거움은 기억하고, 티오프 시간은 반드시 기억하기.</p></div></div>
-      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>골프장 이동 & 조식</b><p>아침식사는 클럽하우스에서 대충 속풀고 컨디션 회복.</p></div></div>
+      <div class="timeitem"><div class="time">06:00–07:00</div><div class="pin"></div><div><b>골프장 이동 & 조식</b><p>아침식사는 클럽하우스에서 속풀이~~.</p></div></div>
       <div class="timeitem"><div class="time">07:00–11:30</div><div class="pin"></div><div><b>2일차 개인 스트로크</b><p>오늘은 온전히 내 스코어와의 대화. 행운의 공 하나쯤은 옵니다.</p></div></div>
       <div class="timeitem"><div class="time">13:10–13:40</div><div class="pin"></div><div><b>시상 & 단체사진</b><p>트로피도, 웃음도, 단체사진도 모두 챙겨서 해산!</p></div></div>
     </div>
   </section>
 
-  <!-- ④ 뽑기 섹션: 벌칙 룰렛 추가 -->
   <section class="card game" id="game">
     <h3>🎲 오늘의 골프 한마디 뽑기</h3>
     <div class="roulette">
       <div class="ballmini">⛳</div>
       <div><b>라운드 전 한 줄 처방전</b><span>버튼을 눌러 오늘의 멘트를 뽑아보세요.</span></div>
-      <button onclick="drawQuote()">뽑기</button>
+      <button onclick="drawQuote(event)">뽑기</button>
     </div>
     <div class="result" id="result"></div>
 
-    <!-- 벌칙 룰렛 -->
     <div class="roulette" style="margin-top:10px">
       <div class="ballmini">🎰</div>
       <div><b>오늘 밤 벌칙 뽑기</b><span>파티 전 한 명씩 돌려보세요.</span></div>
-      <button onclick="drawPenalty()" style="background:linear-gradient(135deg,#ff7c4d,#ffb347)">뽑기</button>
+      <button onclick="drawPenalty(event)" style="background:linear-gradient(135deg,#ff7c4d,#ffb347)">뽑기</button>
     </div>
     <div class="penalty-result" id="penalty-result"></div>
   </section>
@@ -326,7 +418,7 @@ const quotes = [
   "OB는 없었습니다. 다만 다음 홀로 가는 지름길이었을 뿐. 🌲",
   "퍼팅은 마음으로, 스코어는 겸손하게. ⛳",
   "캐디님이 웃으면 아직 희망이 있습니다. 😄",
-  "갑형한테 그냥 딱 만원만 따자!!! 😄",
+  "갑형돈 딱 만원만 따ㅑ~~~ 😄",
   "동반자의 나이스샷은 크게, 내 미스샷은 작게 기억하기. 🤝",
   "멀리 가는 드라이버보다 같이 가는 동반자가 좋습니다. 🏌️",
   "오늘도 공보다 더 많이 굴러갈 것은 이야기입니다. 🍻",
@@ -346,22 +438,188 @@ const penalties = [
   "🎰 면제! 오늘은 운이 따릅니다. 내일 버디 확률 +10% 🍀"
 ];
 
-function drawQuote(){
+/* ⏱️ D-Day 타이머 */
+const targetDate = new Date("2026-09-12T11:00:00").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById("countdown-timer").textContent = "⛳ 대회 진행 중! 나이스 샷!";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown-timer").textContent = 
+    `${days}일 ${hours.toString().padStart(2,'0')}시간 ${minutes.toString().padStart(2,'0')}분 ${seconds.toString().padStart(2,'0')}초`;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* 🏌️ 클럽 스윙 애니메이션 */
+function triggerGolfSwing() {
+  const club = document.getElementById("hero-club");
+  const ball = document.getElementById("hero-ball");
+  club.classList.remove("active");
+  ball.classList.remove("active");
+  void club.offsetWidth;
+  club.classList.add("active");
+  setTimeout(() => { ball.classList.add("active"); }, 200);
+}
+
+/* 🎉 이모지 폭죽 이펙트 */
+function burstConfetti(e) {
+  const emojis = ['⛳', '🍺', '🥩', '🍀', '🎉', '🏌️', '🔥', '🌟'];
+  const burstCount = 15;
+  const x = e.clientX || window.innerWidth / 2;
+  const y = e.clientY || window.innerHeight / 2;
+
+  for (let i = 0; i < burstCount; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = 50 + Math.random() * 100;
+    p.style.setProperty('--mx', Math.cos(angle) * velocity + 'px');
+    p.style.setProperty('--my', Math.sin(angle) * velocity + 'px');
+    p.style.setProperty('--mr', (Math.random() * 360 - 180) + 'deg');
+
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 800);
+  }
+}
+
+function drawQuote(e){
+  triggerGolfSwing();
+  burstConfetti(e);
   const el = document.getElementById('result');
   el.textContent = quotes[Math.floor(Math.random()*quotes.length)];
   el.style.display = 'block';
 }
 
-function drawPenalty(){
+function drawPenalty(e){
+  burstConfetti(e);
   const el = document.getElementById('penalty-result');
   el.style.display = 'none';
   setTimeout(()=>{
-    el.textContent = "🎰 뽑는 중...";
+    el.textContent = "🎰 벌칙 주사위 굴리는 중...";
     el.style.display = 'block';
     setTimeout(()=>{
       el.textContent = penalties[Math.floor(Math.random()*penalties.length)];
     }, 600);
   }, 50);
+}
+
+/* 🌙 야간 모드 토글 및 은하수 제어 */
+let nightModeActive = false;
+function toggleNightMode(e) {
+  burstConfetti(e);
+  nightModeActive = document.body.classList.toggle("night-shift");
+  
+  const btnIcon = document.getElementById("party-btn-icon");
+  const btnText = document.getElementById("party-btn-text");
+
+  if(nightModeActive) {
+    btnIcon.textContent = "☀️";
+    btnText.textContent = "낮 모드로 돌아가기";
+    startGalaxy(); // 🌌 은하수 가동
+  } else {
+    btnIcon.textContent = "🔥";
+    btnText.textContent = "19번 홀 파티 모드 가동!";
+  }
+}
+
+/* 🌌 AI 추가: 은하수 & 떨어지는 별빛 Canvas 그래픽 엔진 */
+const canvas = document.getElementById('galaxy-canvas');
+const ctx = canvas.getContext('2d');
+
+let stars = [];
+const numStars = 110; // 떨어지는 별빛 개수
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// 별 객체 생성기
+function initStars() {
+  stars = [];
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      length: Math.random() * 3 + 1,      // 떨어지는 선의 길이
+      speed: Math.random() * 1.5 + 0.5,    // 떨어지는 속도
+      opacity: Math.random() * 0.7 + 0.3,
+      size: Math.random() * 1.5 + 0.5     // 별의 크기
+    });
+  }
+}
+initStars();
+
+function animateGalaxy() {
+  if (!nightModeActive) return; // 야간 모드 꺼지면 루프 중단
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 1. 배경에 은은한 몽환적 은하수 구름(네뷸라 효과) 그리기
+  let gradient = ctx.createRadialGradient(canvas.width*0.8, canvas.height*0.2, 10, canvas.width*0.7, canvas.height*0.3, canvas.width);
+  gradient.addColorStop(0, 'rgba(40, 20, 70, 0.25)'); // 보랏빛 성운
+  gradient.addColorStop(0.5, 'rgba(10, 30, 60, 0.15)'); // 푸른 빛 성운
+  gradient.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // 2. 우측 상단에서 좌측 하단으로 막 떨어지는 별빛 군무 그리기
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+  ctx.fillStyle = 'rgba(255, 243, 200, 0.9)';
+  ctx.lineWidth = 1.2;
+
+  for (let i = 0; i < stars.length; i++) {
+    let p = stars[i];
+
+    ctx.beginPath();
+    ctx.globalAlpha = p.opacity;
+    
+    // 비스듬히 흐르는 은하수 느낌을 내기 위해 대각선으로 선을 그림
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(p.x - p.length * 1.5, p.y + p.length * 2);
+    ctx.stroke();
+
+    // 빛나는 별핵 포인트
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 별 이동 (대각선 왼쪽 아래 방향으로 낙하)
+    p.y += p.speed * 1.3;
+    p.x -= p.speed * 0.9;
+
+    // 화면 밖으로 벗어나면 다시 우측 상단 영역에서 재생성
+    if (p.y > canvas.height || p.x < -20) {
+      p.y = -20;
+      p.x = Math.random() * (canvas.width + 100);
+      p.speed = Math.random() * 1.5 + 0.5;
+    }
+  }
+  ctx.globalAlpha = 1.0; // 알파 초기화
+
+  requestAnimationFrame(animateGalaxy);
+}
+
+function startGalaxy() {
+  initStars();
+  animateGalaxy();
 }
 </script>
 </body>
